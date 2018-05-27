@@ -21,7 +21,7 @@ class UserRegistro(Resource):
     def post(self):
         data = UserRegistro.parser.parse_args()
         
-        if UserModel.encontrar_por_id(data['username']):
+        if UserModel.encontrar_por_username(data['username']):
             return {"mensagem": "Usuario ja existe."}, 400
 
         user = UserModel(data['username'], data['password'])
